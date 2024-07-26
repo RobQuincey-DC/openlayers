@@ -6,7 +6,7 @@ import {Attribution, defaults as defaultControls} from '../src/ol/control.js';
 
 const attribution = new Attribution({
   collapsible: false,
-  staticAttribution: `<a href="https://openlayers.org">I'm a static attribution. I never disappear</a>`
+  staticAttribution: `<a href="https://openlayers.org">I'm a static attribution. I never disappear</a>`,
 });
 const map = new Map({
   layers: [
@@ -22,8 +22,8 @@ const map = new Map({
   }),
 });
 
-document.getElementById('toggleLayerButton').addEventListener('click', (e) => {
-  map.getLayers().forEach(l => {
-    l.setVisible(l.getVisible() ? false: true);
+document.getElementById('toggleLayerButton').addEventListener('click', () => {
+  map.getLayers().forEach((l) => {
+    l.setVisible(l.getVisible() ? false : true);
   });
 });
