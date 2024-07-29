@@ -200,12 +200,15 @@ class Attribution extends Control {
    */
   collectSourceAttributions_(frameState) {
     const layers = this.getMap().getAllLayers();
-    const visibleAttributions = Array.from(
+    let visibleAttributions = Array.from(
       new Set(layers.flatMap((layer) => layer.getAttributions(frameState))),
     );
     if (this.staticAttribution_ !== undefined) {
-      visibleAttributions.push(this.staticAttribution_);
+      visibleAttributions = Array.from(
+        new Set([...visibleAttributions, this.staticAttribution_]),
+      );
     }
+
     if (!this.overrideCollapsible_) {
       const collapsible = !layers.some(
         (layer) => layer.getSource()?.getAttributionsCollapsible() === false,
